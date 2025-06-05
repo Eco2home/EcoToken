@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco²Token - Maison Autonome</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {font-family: 'Nunito', sans-serif; margin:0; background:#f3fff3; color:#2e662e;}
+  h1,h2,h3 {margin:0; padding:0;}
+  .intro {text-align:center; padding:60px 20px; position:relative;}
+  .logo-main {font-size:48px; font-weight:700; margin-bottom:20px;}
+  .icons {display:flex; justify-content:center; gap:20px; margin-top:20px;}
+  .icons div {display:flex; flex-direction:column; align-items:center; font-size:24px;}
+  .icons .no {color:#bb0000;}
+  .icons .yes {color:#2e662e;}
+  .counter {text-align:center; padding:20px; background:#ffffff; margin:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+  #countdown {font-size:32px; font-weight:bold;}
+  .emotion {text-align:center; padding:40px 20px; font-size:20px; line-height:1.4;}
+  .cta {text-align:center; margin:20px;}
+  .cta button {background:#2e662e; color:#fff; border:none; padding:15px 25px; font-size:18px; cursor:pointer; border-radius:5px;}
+  .offers {padding:40px 20px;}
+  .offer {background:#fff; border-radius:8px; padding:20px; margin-bottom:20px; box-shadow:0 0 10px rgba(0,0,0,0.1);} 
+  .offer h3 {margin-bottom:10px;}
+  .offer button {background:#2e662e; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;}
+  .eco-home, .hadile {padding:40px 20px; background:#ffffff; margin:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+  .hadile img {width:120px; height:120px; border-radius:50%; display:block; margin:0 auto 20px;}
+  .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;}
+  .modal-content {background:#fff; padding:20px; border-radius:8px; width:90%; max-width:400px;}
+  .modal-content button.close {float:right; background:transparent; border:none; font-size:20px; cursor:pointer;}
+  label {display:block; margin-top:10px;}
+  input, select {width:100%; padding:8px; margin-top:5px;}
+  .fade-in {opacity:0; animation:fadeIn 1s forwards;}
+  @keyframes fadeIn {to {opacity:1;}}
+  @media(min-width:600px) {
+    .offer {display:flex; justify-content:space-between; align-items:center;}
+    .offer div {flex:1;}
+  }
+</style>
+</head>
+<body>
+<section class="intro fade-in">
+  <div class="logo-main">Eco²Home</div>
+  <div class="icons">
+    <div><span class="no">❌</span> Crédit bancaire</div>
+    <div><span class="no">❌</span> Factures énergétiques</div>
+    <div><span class="yes">✅</span> Accessible à tous</div>
+  </div>
+</section>
+<section class="counter fade-in">
+  <div>Offre flash en cours - Il reste <span id="countdown"></span></div>
+  <div>Visiteurs : <span id="visitorCount"></span></div>
+</section>
+<section class="emotion fade-in">
+  <h2>Imaginez une vie sans dettes, sans factures, dans une maison intelligente conçue pour vous…</h2>
+</section>
+<section class="cta fade-in">
+  <button onclick="openModal('contactModal')">Je prends rendez-vous avec Hadile</button>
+</section>
+<section class="offers fade-in">
+  <h2>Offres Eco²</h2>
+  <div class="offer">
+    <div>
+      <h3>Offre Découverte</h3>
+      <p>100 € - 10 tokens pour accéder à notre communauté.</p>
+    </div>
+    <button onclick="openOffer('offre1')">Découvrir cette offre</button>
+  </div>
+  <div class="offer">
+    <div>
+      <h3>Formule Autonomie</h3>
+      <p>500 € - 60 tokens + accès VIP aux projets.</p>
+    </div>
+    <button onclick="openOffer('offre2')">Découvrir cette offre</button>
+  </div>
+  <div class="offer">
+    <div>
+      <h3>Parcours Pionnier</h3>
+      <p>1000 € - 150 tokens et participation active à la maison pilote.</p>
+    </div>
+    <button onclick="openOffer('offre3')">Découvrir cette offre</button>
+  </div>
+  <div class="offer">
+    <div>
+      <h3>Clé d’accès Illimitée</h3>
+      <p>2500 € - 400 tokens, accompagnement personnalisé pour votre maison autonome.</p>
+    </div>
+    <button onclick="openOffer('offre4')">Découvrir cette offre</button>
+  </div>
+</section>
+<section class="eco-home fade-in">
+  <h2>Qu’est-ce qu’Eco²Home ?</h2>
+  <p>Eco²Home est notre vision d’un habitat durable, autonome en énergie et respectueux de l’environnement. Grâce à la technologie et à la communauté, nous construisons des maisons intelligentes accessibles au plus grand nombre.</p>
+</section>
+<section class="hadile fade-in">
+  <img src="https://via.placeholder.com/120" alt="Hadile">
+  <h2>Je suis Hadile, artisan du changement…</h2>
+  <p>Avec Eco²Token, je vous accompagne vers la liberté énergétique et financière. Ensemble, nous bâtissons un futur plus vert.</p>
+</section>
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('contactModal')">&times;</button>
+    <h3>Prendre rendez-vous avec Hadile</h3>
+    <form>
+      <label>Prénom
+        <input type="text" required>
+      </label>
+      <label>Email
+        <input type="email" required>
+      </label>
+      <label>Téléphone
+        <input type="tel" required>
+      </label>
+      <label>Créneau horaire
+        <select required>
+          <option>Matin</option>
+          <option>Après-midi</option>
+          <option>Soir</option>
+        </select>
+      </label>
+      <button type="submit" style="margin-top:15px;background:#2e662e;color:#fff;border:none;padding:10px 20px;border-radius:5px;">Envoyer</button>
+    </form>
+  </div>
+</div>
+<div id="offre1" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('offre1')">&times;</button>
+    <h3>Offre Découverte</h3>
+    <p>10 tokens pour rejoindre la communauté et découvrir nos projets.</p>
+    <button style="background:#2e662e;color:#fff;border:none;padding:10px 20px;border-radius:5px;">Acheter</button>
+  </div>
+</div>
+<div id="offre2" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('offre2')">&times;</button>
+    <h3>Formule Autonomie</h3>
+    <p>60 tokens et un accès VIP pour suivre nos réalisations en avant-première.</p>
+    <button style="background:#2e662e;color:#fff;border:none;padding:10px 20px;border-radius:5px;">Acheter</button>
+  </div>
+</div>
+<div id="offre3" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('offre3')">&times;</button>
+    <h3>Parcours Pionnier</h3>
+    <p>150 tokens et participation directe à notre maison pilote.</p>
+    <button style="background:#2e662e;color:#fff;border:none;padding:10px 20px;border-radius:5px;">Acheter</button>
+  </div>
+</div>
+<div id="offre4" class="modal">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal('offre4')">&times;</button>
+    <h3>Clé d’accès Illimitée</h3>
+    <p>400 tokens et accompagnement personnalisé pour votre maison autonome.</p>
+    <button style="background:#2e662e;color:#fff;border:none;padding:10px 20px;border-radius:5px;">Acheter</button>
+  </div>
+</div>
+<script>
+function openModal(id){document.getElementById(id).style.display='flex';}
+function closeModal(id){document.getElementById(id).style.display='none';}
+function openOffer(id){openModal(id);} 
+// Visitor counter using localStorage
+var count=localStorage.getItem('visits')||0;
+count++;
+localStorage.setItem('visits',count);
+document.getElementById('visitorCount').textContent=count;
+// Countdown 30 days
+var endDate = new Date();
+endDate.setDate(endDate.getDate()+30);
+function updateCountdown(){
+  var now=new Date();
+  var diff=endDate-now;
+  if(diff<0) diff=0;
+  var days=Math.floor(diff/(1000*60*60*24));
+  var hours=Math.floor((diff/(1000*60*60))%24);
+  var minutes=Math.floor((diff/1000/60)%60);
+  var seconds=Math.floor((diff/1000)%60);
+  document.getElementById('countdown').textContent=days+'j '+hours+'h '+minutes+'m '+seconds+'s';
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
+</body>
+</html>
